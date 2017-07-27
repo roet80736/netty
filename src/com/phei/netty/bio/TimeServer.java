@@ -20,7 +20,7 @@ public class TimeServer {
 	    while(true){
 		socket = server.accept();
 		singleExecutor.execute(new TimeServerHandler(socket));
-//		new Thread(new TimeServerHandler(socket)).start();
+//		new Thread(new EchoServerHandler(socket)).start();
 	    }
 	    
 	    

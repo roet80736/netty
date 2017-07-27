@@ -3,5 +3,7 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="lib" path="lib/netty-all-4.1.13.Final.jar" sourcepath="E:/MyEclipseWorkSpace/netty_3.1/lib/netty-all-4.1.13.Final-sources.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jdk1.7.0_80"/>
+	<classpathentry kind="lib" path="lib/javassist-3.16.1-GA.jar"/>
+	<classpathentry kind="lib" path="lib/msgpack-0.6.6.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

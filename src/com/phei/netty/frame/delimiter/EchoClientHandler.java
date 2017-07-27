@@ -1,4 +1,4 @@
-package com.phei.netty.chat;
+package com.phei.netty.frame.delimiter;
 
 
 import java.io.UnsupportedEncodingException;
@@ -11,32 +11,36 @@ import io.netty.channel.ChannelHandlerAdapter;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.ByteToMessageDecoder;
 
-public class TimeClientHandler extends ByteToMessageDecoder{
+public class EchoClientHandler extends ByteToMessageDecoder{
     
-    private static final Logger logger = Logger.getLogger(TimeClientHandler.class.getName());
+    private static final Logger logger = Logger.getLogger(EchoClientHandler.class.getName());
     
 //    private final ByteBuf firstMessage;
     
     private int counter;
-    private byte[] req;
+//    private byte[] req;
+    static final String ECHO_REQ = "Hi,feng,Welcome to Netty.$_";
     /**
      * 
      * <p>Title:</p>
      * <p>Description:</p>
      */
-    public TimeClientHandler(){
-	req = ("QUERY TIME ORDER" + System.getProperty("line.separator")).getBytes();
+    public EchoClientHandler(){
+//	req = ("QUERY TIME ORDER" + System.getProperty("line.separator")).getBytes();
 //	firstMessage = Unpooled.buffer(req.length);
 //	firstMessage.writeBytes(req);
     }
     @Override
     public void channelActive(ChannelHandlerContext ctx){
 //	ctx.writeAndFlush(firstMessage);
-	ByteBuf message = null;
-	for(int i = 0; i < 100; i++){
-	    message = Unpooled.buffer(req.length);
-	    message.writeBytes(req);
-	    ctx.writeAndFlush(message);
+//	ByteBuf message = null;
+//	for(int i = 0; i < 100; i++){
+//	    message = Unpooled.buffer(req.length);
+//	    message.writeBytes(req);
+//	    ctx.writeAndFlush(message);
+//	}
+	for(int i = 0; i < 10; i++){
+	    ctx.writeAndFlush(Unpooled.copiedBuffer(ECHO_REQ.getBytes()));
 	}
     }
     @Override
@@ -47,8 +51,9 @@ public class TimeClientHandler extends ByteToMessageDecoder{
 //	String body = new String(req,"UTF-8");
 //	System.out.println("Now is : " + body + " ; the counter is : " + ++counter);
 	
-	String body = (String) msg;
-	System.out.println("Now is :" + body + " ; the counter is : " + ++counter);
+//	String body = (String) msg;
+//	System.out.println("Now is :" + body + " ; the counter is : " + ++counter);
+	System.out.println("This is " + ++counter + "times receive server : [" + msg + "]");
 	
     }
     

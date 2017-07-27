@@ -1,4 +1,4 @@
-package com.phei.netty.chat;
+package com.phei.netty.frame.fixedLen;
 
 import java.io.UnsupportedEncodingException;
 import java.util.Date;
@@ -10,7 +10,7 @@ import io.netty.channel.ChannelHandlerAdapter;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.ByteToMessageDecoder;
 
-public class TimeServerHandler extends ByteToMessageDecoder{
+public class EchoServerHandler extends ByteToMessageDecoder{
     
     private int counter;
     @Override
@@ -26,13 +26,24 @@ public class TimeServerHandler extends ByteToMessageDecoder{
 //	currentTime = currentTime + System.getProperty("line.separator");
 //	ByteBuf resp = Unpooled.copiedBuffer(currentTime.getBytes());
 //	ctx.write(resp);
-	String body = (String) msg;
-	System.out.println("The time server receive order : " + body + " ; the counter is : " + ++counter);
-	String currentTime = "QUERY TIME ORDER".equalsIgnoreCase(body) ? new Date(
-		System.currentTimeMillis()).toString() : "BAD ORDER";
-	currentTime = currentTime + System.getProperty("line.separator");
-	ByteBuf resp = Unpooled.copiedBuffer(currentTime.getBytes());
-	ctx.writeAndFlush(resp);
+	
+	
+	
+//	String body = (String) msg;
+//	System.out.println("The time server receive order : " + body + " ; the counter is : " + ++counter);
+//	String currentTime = "QUERY TIME ORDER".equalsIgnoreCase(body) ? new Date(
+//		System.currentTimeMillis()).toString() : "BAD ORDER";
+//	currentTime = currentTime + System.getProperty("line.separator");
+//	ByteBuf resp = Unpooled.copiedBuffer(currentTime.getBytes());
+//	ctx.writeAndFlush(resp);
+	
+//	String body = (String) msg;
+//	System.out.println("This is " + ++counter + " times receive client : [" + body +"]");
+//	body += "$_";
+//	ByteBuf echo = Unpooled.copiedBuffer(body.getBytes());
+//	ctx.writeAndFlush(echo);
+	
+	System.out.println("Receive client : [" + msg + "]");
 	
     }
     public void channelReadComplete(ChannelHandlerContext ctx){
